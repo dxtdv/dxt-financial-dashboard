@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "dxt-financal-dashboard"
-  }
+    "default": "dxt-financal-dashboard",
+    "staging": "dxt-financial-board-staging"
+  },
+  "targets": {}
 }
