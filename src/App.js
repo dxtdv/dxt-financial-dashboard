@@ -1,5 +1,4 @@
 import React from 'react'
-
 export default function App() {
   return (
     <div style={{
@@ -11,6 +10,10 @@ export default function App() {
       fontFamily:'roboto'
 
     }}>
+      <img src = "./logo.png" alt = "DXT Financial DashBoard logo" style={{
+        width:'100px'
+      }
+      }/>
       <h1 style={{
         color:'#6EC177',
         margin: 0
