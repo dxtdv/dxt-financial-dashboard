@@ -2,7 +2,6 @@ import React from 'react'
 import { Box } from '@mui/system'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import MuiDrawer from '@mui/material/Drawer';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
