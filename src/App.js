@@ -1,24 +1,36 @@
 import React from 'react'
-export default function App() {
-  return (
-    <div style={{
-      display:'flex',
-      flexDirection:'column',
-      justifyContent:'center',
-      alignItems:'center',
-      height:'100vh',
-      fontFamily:'roboto'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Box } from '@mui/system'
 
-    }}>
-      <img src = "./logo.png" alt = "DXT Financial DashBoard logo" style={{
-        width:'100px'
-      }
-      }/>
-      <h1 style={{
-        color:'#6EC177',
-        margin: 0
-      }}>This is a financial dashbord</h1>
-      <h2>Comming soon!</h2>
-    </div>
+
+import Navigation2 from './components/Navigation'
+
+
+import routes from './routes'
+
+
+const App = () => {
+
+  const theme = createTheme();
+
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Box sx={{ display: 'flex' }}>
+          <Navigation2 />
+          <Routes>
+            {routes.map((route, index)=>{
+              return(
+                <Route key = {index} path={route.path} element={<route.component/>}/>
+              )
+            })}
+          </Routes>
+
+        </Box>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
+
+export default App
