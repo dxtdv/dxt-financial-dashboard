@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders Comming soon!', () => {
+test('Mini variant drawer!', () => {
   render(<App />);
-  const h1Element = screen.getByText(/This is a financial dashbord/i);
-  expect(h1Element).toBeInTheDocument();
+  const divElement = screen.getByText(/Mini variant drawer/i);
+  expect(divElement).toBeInTheDocument();
 });
