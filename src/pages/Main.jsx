@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Box } from '@mui/system'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+
+import { AuthContext } from '../AuthContext'
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -13,10 +15,14 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function Main() {
+    const {logedUserEmail} = useContext(AuthContext)
+    {console.log('login user email main',logedUserEmail)}
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
+                <h3>You're connected as: {logedUserEmail}</h3>
                 <Typography paragraph>
+                   
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
                     enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus

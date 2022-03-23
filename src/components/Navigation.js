@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React, {useContext} from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -9,15 +9,18 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
 
 
 import routes from '../routes'
+
 
 const drawerWidth = 240;
 
@@ -89,6 +92,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const { token, signout } = useContext(AuthContext)
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -97,6 +101,11 @@ export default function MiniDrawer() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const handleSignOut = async (e) => {
+        alert("You're about to LogOut")
+        signout();
+    }
 
     return (
         <>
@@ -118,6 +127,17 @@ export default function MiniDrawer() {
                     <Typography variant="h6" noWrap component="div">
                         Mini variant drawer
                     </Typography>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleSignOut}
+                        edge="end"
+                        sx={{
+                            marginRight: 5,
+                        }}
+                    >
+                        <ExitToAppIcon />
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
@@ -131,27 +151,27 @@ export default function MiniDrawer() {
                     {routes.map((route, index) => (
                         <React.Fragment key={index}>
                             {route.path === '/sign-out' && (<Divider />)}
-                                <ListItemButton
-                                  component={Link}
+                            <ListItemButton
+                                component={Link}
                                 to={route.path}
-                                    key={index}
+                                key={index}
+                                sx={{
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
+                                }}
+                            >
+                                <ListItemIcon
                                     sx={{
-                                        minHeight: 48,
-                                        justifyContent: open ? 'initial' : 'center',
-                                        px: 2.5,
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
                                     }}
                                 >
-                                    <ListItemIcon
-                                        sx={{
-                                            minWidth: 0,
-                                            mr: open ? 3 : 'auto',
-                                            justifyContent: 'center',
-                                        }}
-                                    >
-                                        {route.icon}
-                                    </ListItemIcon>
-                                    <ListItemText primary={route.label} sx={{ opacity: open ? 1 : 0 }} />
-                                </ListItemButton>
+                                    {route.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={route.label} sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
                         </React.Fragment>
                     ))}
 
