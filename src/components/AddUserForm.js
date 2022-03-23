@@ -1,7 +1,7 @@
 import { Button, FormControl, TextField } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
-import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
 
 import appFirebase from '../firebase-config'
 
@@ -27,7 +27,6 @@ export default function AddUserForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        //console.log(user)
         try {
             await addDoc(collection(db, 'users'), {
                 ...user

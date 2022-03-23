@@ -6,19 +6,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { getFirestore, collection, getDocs, deleteDoc, doc, getDoc } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, deleteDoc, doc } from 'firebase/firestore'
 import appFirebase from '../firebase-config'
 import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { async } from '@firebase/util';
 
 const db = getFirestore(appFirebase)
 
 export default function UsersList() {
 
     const [users, setUsers] = useState([])
-    const [subId, setSubId] = useState('')
+    // const [subId, setSubId] = useState('')
     const usersCollectionRef = collection(db, 'users')
 
     useEffect(() => {
@@ -32,25 +31,23 @@ export default function UsersList() {
     }, [users]);
 
     //edit user
-    const getOne = async (id) => {
-        try {
-            const docRef = doc(db, 'users', id)
-            const docSnap = await getDoc(docRef)
-            //setUser(docSnap.data())
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const getOne = async (id) => {
+    //     try {
+    //         //const docRef = doc(db, 'users', id)
+    //         //const docSnap = await getDoc(docRef)
+    //         //setUser(docSnap.data())
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
-    useEffect(() => {
-        if (subId !== '')
-            console.log('from use effect:', subId)
-        getOne(subId)
-    }, [subId])
+    // useEffect(() => {
+    //     if (subId !== '')
+    //     getOne(subId)
+    // }, [subId])
 
     //function para eliminar el usuario = function to delete the user
     const handleDeleteAction = async (id) => {
-        console.log(id)
         await deleteDoc(doc(db, 'users', id))
     }
 
@@ -91,7 +88,7 @@ export default function UsersList() {
                                     <TableCell align="left">{user.hobby}</TableCell>
                                     <TableCell align="left">{user.address}</TableCell>
                                     <TableCell align="left">
-                                        <IconButton aria-label="edite" onClick={() => setSubId(user.id)}>
+                                        <IconButton aria-label="edite" >
                                             <EditIcon color="primary" />
                                         </IconButton>
                                         <IconButton aria-label="delete" onClick={() => handleDeleteAction(user.id)}>

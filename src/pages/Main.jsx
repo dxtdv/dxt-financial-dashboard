@@ -16,7 +16,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function Main() {
     const {logedUserEmail} = useContext(AuthContext)
-    {console.log('login user email main',logedUserEmail)}
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
