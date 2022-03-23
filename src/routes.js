@@ -5,6 +5,8 @@ import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import LockIcon from '@mui/icons-material/Lock';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import HomeIcon from '@mui/icons-material/Home';
+
 import SignOut from './pages/SignOut';
 import Main from './pages/Main';
 import MyAccount from './pages/MyAccount';
@@ -18,7 +20,7 @@ const routes = [
     {
         label: 'Home',
         path: '/',
-        icon: <AccountBoxIcon />,
+        icon: <HomeIcon />,
         component:Main,
     },
     {

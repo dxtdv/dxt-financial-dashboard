@@ -1,6 +1,9 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/system'
 import React from 'react'
+import UsersList from '../components/UsersList';
+import AddUserForm from '../components/AddUserForm'
+
 
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -38,14 +41,11 @@ export default function Dashboard() {
                         borderRadius: '12px',
                         boxShadow: 1,
                         fontWeight: 'bold',
-                        marginRight:'20px'
+                        marginRight:'20px',
+                        padding:'5px'
                     }}
                 >
-                    Dashboard page <br />
-                    Dashboard page <br />
-                    Dashboard page <br />
-                    Dashboard page <br />
-                    Dashboard page <br />
+                    <UsersList/>
                 </Box>
                 <Box
                     sx={{
@@ -58,11 +58,7 @@ export default function Dashboard() {
                         fontWeight: 'bold',
                     }}
                 >
-                    Dashboard page <br />
-                    Dashboard page <br />
-                    Dashboard page <br />
-                    Dashboard page <br />
-                    Dashboard page <br />
+                    <AddUserForm/>
                 </Box>
             </Box>
             <Box
